@@ -14,7 +14,7 @@ Live at **https://detectmind.github.io/participant-recruitment-uos/** (once GitH
 docs/
 ├── index.html      # the whole site (HTML + CSS + a little JS, no build step)
 ├── .nojekyll
-└── assets/         # study banner, university logos, app icon, app screenshots, team photo
+└── assets/         # study banner, university logos, app icon
 ```
 
 ## How the form works
