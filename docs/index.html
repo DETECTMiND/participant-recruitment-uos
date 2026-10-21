@@ -121,50 +121,68 @@
     .btn-outline:hover { border-color: #fff; transform: translateY(-2px); }
 
     /* Phone illustration */
-    .visual { position: relative; width: 440px; height: 500px; margin: 0 auto; }
-    .visual .links { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .phone {
-      position: absolute; left: 50%; top: 50%; width: 214px; height: 432px;
-      transform: translate(-50%, -50%) rotate(-6deg);
-      background: #0A0C26; border-radius: 40px; padding: 10px;
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, .14), 0 40px 80px -20px rgba(0, 0, 0, .7);
+    .visual { position: relative; width: 500px; height: 520px; margin: 0 auto; }
+    .device {
+      position: absolute; left: 50%; top: 18px; width: 232px; height: 470px; margin-left: -116px;
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) both, drift 9s ease-in-out 1s infinite;
     }
-    .screen {
-      position: relative; height: 100%; border-radius: 31px; overflow: hidden;
-      background: linear-gradient(160deg, #20C3E8 0%, #3466EC 52%, #7A45E6 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    .device::after {
+      content: ""; position: absolute; left: 12%; right: 12%; bottom: -26px; height: 26px; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(0, 0, 0, .45), transparent); filter: blur(4px);
     }
-    .screen::before { content: ""; position: absolute; top: 10px; left: 50%; width: 70px; height: 20px; transform: translateX(-50%); background: #0A0C26; border-radius: 12px; }
-    .rings { position: relative; width: 96px; height: 96px; display: grid; place-items: center; }
-    .rings span { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .55); animation: ring 3s ease-out infinite; }
-    .rings span:nth-child(2) { animation-delay: 1s; }
-    .rings span:nth-child(3) { animation-delay: 2s; }
-    @keyframes ring { 0% { transform: scale(.9); opacity: .8; } 100% { transform: scale(2.1); opacity: 0; } }
-    .rings img { position: relative; width: 84px; height: 84px; border-radius: 22px; box-shadow: 0 12px 30px rgba(10, 12, 38, .35); }
-    .screen strong { margin-top: 26px; font-size: 18px; letter-spacing: .2px; }
-    .screen .bars { display: flex; gap: 5px; align-items: flex-end; height: 34px; margin-top: 18px; }
-    .screen .bars i { width: 6px; border-radius: 3px; background: rgba(255, 255, 255, .75); transform-origin: bottom; animation: eq 1.8s ease-in-out infinite; }
-    .screen .bars i:nth-child(1) { height: 40%; animation-delay: -.2s; }
-    .screen .bars i:nth-child(2) { height: 75%; animation-delay: -.6s; }
-    .screen .bars i:nth-child(3) { height: 55%; animation-delay: -1s; }
-    .screen .bars i:nth-child(4) { height: 90%; animation-delay: -.4s; }
-    .screen .bars i:nth-child(5) { height: 45%; animation-delay: -1.3s; }
-    .screen .bars i:nth-child(6) { height: 70%; animation-delay: -.8s; }
-    @keyframes eq { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+    .frame {
+      position: relative; height: 100%; border-radius: 46px; padding: 9px;
+      background: linear-gradient(145deg, #2A2F55, #0B0D24 40%, #1A1E42);
+      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .14), 0 30px 60px -20px rgba(0, 0, 0, .65);
+    }
+    .frame::before, .frame::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: #2A2F55; }
+    .frame::before { left: -3px; top: 110px; height: 52px; box-shadow: 0 66px 0 #2A2F55; }
+    .frame::after { right: -3px; top: 150px; height: 74px; }
+    .ui {
+      position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: #F5F7FB;
+      color: #14173A; font-size: 11px; line-height: 1.35; padding: 0 14px;
+    }
+    .island { position: absolute; top: 9px; left: 50%; width: 76px; height: 22px; margin-left: -38px; border-radius: 12px; background: #0B0D24; }
+    .status { display: flex; justify-content: space-between; align-items: center; height: 40px; padding: 0 10px; font-size: 11px; font-weight: 700; }
+    .status svg { width: 34px; height: 10px; }
+    .ui-head { display: flex; align-items: center; gap: 8px; margin: 6px 0 12px; }
+    .ui-head img { width: 26px; height: 26px; border-radius: 7px; }
+    .ui-head b { font-size: 13px; font-weight: 800; letter-spacing: -.1px; }
+    .ui-card { background: #fff; border-radius: 14px; padding: 12px; box-shadow: 0 1px 2px rgba(20, 23, 58, .06); margin-bottom: 10px; }
+    .enrolled { display: flex; gap: 10px; align-items: center; }
+    .enrolled .ok { width: 28px; height: 28px; border-radius: 50%; background: #E3F6EF; color: #12A06F; display: grid; place-items: center; flex-shrink: 0; }
+    .enrolled .ok svg { width: 15px; height: 15px; }
+    .enrolled strong { display: block; font-size: 12px; }
+    .enrolled span { color: #6B708E; font-size: 10.5px; }
+    .live { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; padding: 4px 8px; border-radius: 6px; background: #EEF3FE; color: #2F6BEA; font-size: 10px; font-weight: 700; }
+    .live i { width: 6px; height: 6px; border-radius: 50%; background: #2F6BEA; }
+    .ui-label { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; color: #6B708E; margin: 0 0 8px; }
+    .chart { display: flex; align-items: flex-end; gap: 5px; height: 58px; }
+    .chart i { flex: 1; border-radius: 3px 3px 1px 1px; background: #D5E1FB; transform-origin: bottom; animation: grow .8s cubic-bezier(.2, .7, .2, 1) both; }
+    .chart i.hi { background: #2F6BEA; }
+    .hours { display: flex; justify-content: space-between; color: #9A9EB6; font-size: 9px; margin-top: 5px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stats div + div { border-left: 1px solid #EEF0F6; padding-left: 10px; }
+    .stats span { display: block; color: #6B708E; font-size: 10px; font-weight: 600; }
+    .stats b { font-size: 15px; font-weight: 800; letter-spacing: -.2px; }
+    .sync { text-align: center; color: #9A9EB6; font-size: 9.5px; margin-top: 4px; }
 
-    .bubble {
-      position: absolute; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center;
-      color: #fff; box-shadow: 0 14px 30px -10px rgba(0, 0, 0, .55), inset 0 0 0 4px rgba(255, 255, 255, .18);
-      animation: float 6s ease-in-out infinite;
+    .tile {
+      position: absolute; display: flex; align-items: center; gap: 10px; white-space: nowrap;
+      background: #fff; color: #14173A; border-radius: 14px; padding: 10px 14px 10px 10px;
+      font-size: 13px; font-weight: 700; box-shadow: 0 16px 34px -14px rgba(0, 0, 0, .55);
+      animation: pop .7s cubic-bezier(.2, .7, .2, 1) both;
     }
-    .bubble svg { width: 28px; height: 28px; }
-    .b1 { left: 22px;  top: 70px;  background: #2F7BEA; }
-    .b2 { left: 0;     top: 214px; background: var(--teal); animation-delay: -2s; }
-    .b3 { left: 34px;  top: 362px; background: var(--purple); animation-delay: -4s; }
-    .b4 { right: 22px; top: 60px;  background: var(--pink); animation-delay: -1s; }
-    .b5 { right: 0;    top: 204px; background: #5B3FD8; animation-delay: -3s; }
-    .b6 { right: 30px; top: 352px; background: #19B39B; animation-delay: -5s; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .tile .ic { width: 30px; height: 30px; border-radius: 9px; background: #EEF3FE; color: #2F6BEA; display: grid; place-items: center; }
+    .tile .ic svg { width: 17px; height: 17px; }
+    .t1 { left: -12px; top: 70px; animation-delay: .55s; }
+    .t2 { left: -12px; top: 300px; animation-delay: .75s; }
+    .t3 { right: -12px; top: 180px; animation-delay: .65s; }
+    .t4 { right: -12px; top: 390px; animation-delay: .85s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+    @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+    @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
     /* ---------- Steps ---------- */
     .steps-section { position: relative; margin-top: -110px; padding-bottom: 40px; }
@@ -274,7 +292,7 @@
       .badge { font-size: 11.5px; letter-spacing: 2px; }
       .hero h1 { margin: 22px 0; letter-spacing: -1px; }
       .actions .btn { flex: 1 1 100%; }
-      .visual { transform: scale(.74); transform-origin: top center; margin: 0 0 -130px -220px; left: 50%; }
+      .visual { transform: scale(.68); transform-origin: top center; margin: 0 0 -166px -250px; left: 50%; }
       .steps-section { margin-top: -90px; padding-bottom: 28px; }
       .steps-head { padding: 26px 18px 0; border-radius: 20px 20px 0 0; }
       .steps { padding: 22px 12px 0; gap: 12px; }
@@ -323,27 +341,33 @@
       </div>
 
       <div class="visual" aria-hidden="true">
-        <svg class="links" viewBox="0 0 440 500" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round">
-          <path d="M84 101 C140 120 150 150 170 170" />
-          <path d="M62 245 C110 245 130 250 160 252" />
-          <path d="M96 393 C140 380 150 350 175 330" />
-          <path d="M356 91 C300 110 290 140 270 165" />
-          <path d="M378 235 C330 235 310 245 282 250" />
-          <path d="M348 383 C300 370 290 345 268 325" />
-        </svg>
-        <div class="phone">
-          <div class="screen">
-            <div class="rings"><span></span><span></span><span></span><img src="assets/detectmind-icon.png" alt="" width="84" height="84" /></div>
-            <strong>DETECTMiND</strong>
-            <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="device">
+          <div class="frame">
+            <div class="ui">
+              <div class="island"></div>
+              <div class="status"><span>9:41</span><svg viewBox="0 0 34 10" fill="#14173A"><rect x="0" y="6" width="2.5" height="4" rx=".6"/><rect x="4" y="4" width="2.5" height="6" rx=".6"/><rect x="8" y="2" width="2.5" height="8" rx=".6"/><rect x="12" y="0" width="2.5" height="10" rx=".6"/><rect x="18" y="1" width="13" height="8" rx="2" fill="none" stroke="#14173A" stroke-width="1"/><rect x="19.5" y="2.5" width="8.5" height="5" rx="1"/><rect x="31.5" y="3.5" width="1.5" height="3" rx=".5"/></svg></div>
+              <div class="ui-head"><img src="assets/detectmind-icon.png" alt="" width="26" height="26" /><b>DETECTMiND</b></div>
+              <div class="ui-card">
+                <div class="enrolled"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div><strong>You’re enrolled</strong><span>DETECTMiND Study</span></div></div>
+                <span class="live"><i></i>Running in the background</span>
+              </div>
+              <div class="ui-card">
+                <div class="ui-label"><span>Screen activity</span><span>Today</span></div>
+                <div class="chart"><i style="height:30%;animation-delay:0.90s"></i><i style="height:18%;animation-delay:0.94s"></i><i style="height:26%;animation-delay:0.98s"></i><i class="hi" style="height:48%;animation-delay:1.02s"></i><i class="hi" style="height:70%;animation-delay:1.06s"></i><i class="hi" style="height:56%;animation-delay:1.10s"></i><i style="height:40%;animation-delay:1.14s"></i><i class="hi" style="height:64%;animation-delay:1.18s"></i><i class="hi" style="height:82%;animation-delay:1.22s"></i><i style="height:52%;animation-delay:1.26s"></i><i style="height:36%;animation-delay:1.30s"></i><i style="height:22%;animation-delay:1.34s"></i></div>
+                <div class="hours"><span>6am</span><span>12pm</span><span>6pm</span></div>
+              </div>
+              <div class="ui-card stats">
+                <div><span>Unlocks</span><b>42</b></div>
+                <div><span>Screen time</span><b>3h 12m</b></div>
+              </div>
+              <div class="sync">Last synced 2 min ago</div>
+            </div>
           </div>
         </div>
-        <div class="bubble b1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 19v-3M10 19v-6M14 19v-9M18 19V6"/></svg></div>
-        <div class="bubble b2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01" stroke-width="3"/></svg></div>
-        <div class="bubble b3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></div>
-        <div class="bubble b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></svg></div>
-        <div class="bubble b5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></div>
-        <div class="bubble b6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.3-8.8-8.6A4.8 4.8 0 0 1 12 7.2a4.8 4.8 0 0 1 8.8 4.2C19 15.7 12 20 12 20z"/></svg></div>
+        <div class="tile t1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></svg></span>Screen activity</div>
+        <div class="tile t2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span>Notifications</div>
+        <div class="tile t3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>App usage</div>
+        <div class="tile t4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>Movement</div>
       </div>
     </div>
   </header>
