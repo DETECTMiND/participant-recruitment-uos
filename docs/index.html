@@ -72,19 +72,25 @@
     }
     .hero .wrap { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: 40px; align-items: center; }
 
+    @property --angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
     .badge {
       display: inline-flex; align-items: center; gap: 12px;
-      background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16);
-      padding: 9px 18px 9px 14px; border-radius: 999px;
+      padding: 10px 20px 10px 16px; border-radius: 999px; border: 1.5px solid transparent;
+      background:
+        linear-gradient(#151A52, #151A52) padding-box,
+        conic-gradient(from var(--angle), #16B4E0, #7444E4, #EC3F7A, #16B4E0) border-box;
+      animation: spin 5s linear infinite;
       font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+      box-shadow: 0 0 24px -6px rgba(116, 68, 228, .55);
     }
-    .dot { position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-    .dot::before, .dot::after {
-      content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--red);
-      animation: ping 2.4s cubic-bezier(0, 0, .2, 1) infinite;
-    }
-    .dot::after { animation-delay: 1.2s; }
-    @keyframes ping { 0% { transform: scale(1); opacity: .6; } 80%, 100% { transform: scale(3.2); opacity: 0; } }
+    @keyframes spin { to { --angle: 360deg; } }
+    .signal { display: inline-flex; align-items: flex-end; gap: 2.5px; height: 14px; }
+    .signal i { width: 3px; height: 100%; border-radius: 2px; background: #7FD8F4; transform-origin: bottom; animation: sig 1.4s ease-in-out infinite; }
+    .signal i:nth-child(1) { animation-delay: -.9s; }
+    .signal i:nth-child(2) { animation-delay: -.3s; }
+    .signal i:nth-child(3) { animation-delay: -1.1s; }
+    .signal i:nth-child(4) { animation-delay: -.6s; }
+    @keyframes sig { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
 
     .hero h1 {
       font-size: clamp(36px, 5.2vw, 60px); line-height: 1.06; letter-spacing: -1.6px; font-weight: 800;
@@ -170,8 +176,8 @@
     .steps-head h2 { margin: 0; color: var(--ink); font-size: clamp(26px, 3vw, 34px); letter-spacing: -.8px; font-weight: 800; line-height: 1.15; }
     .steps-head p { margin: 0; color: var(--text); max-width: 26em; }
     .steps {
-      list-style: none; margin: 0; padding: 30px 40px 40px; background: #fff; border-radius: 0 0 24px 24px;
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      list-style: none; margin: 0; padding: 30px 40px 0; background: #fff;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
       box-shadow: 0 30px 60px -30px rgba(14, 18, 64, .25);
     }
     .step {
@@ -183,7 +189,6 @@
     .step-icon svg { width: 26px; height: 26px; }
     .step:nth-child(1) .step-icon { background: linear-gradient(135deg, #16B4E0, #2F6BEA); box-shadow: 0 10px 22px -8px rgba(47, 107, 234, .6); }
     .step:nth-child(2) .step-icon { background: linear-gradient(135deg, #2F6BEA, #7444E4); box-shadow: 0 10px 22px -8px rgba(116, 68, 228, .6); }
-    .step:nth-child(3) .step-icon { background: linear-gradient(135deg, #12A891, #16B4E0); box-shadow: 0 10px 22px -8px rgba(18, 168, 145, .6); }
     .step-num { font-size: 46px; font-weight: 800; line-height: 1; color: #DEE2F1; letter-spacing: -2px; }
     .step h3 { margin: 0 0 8px; font-size: 19px; color: var(--ink); font-weight: 800; letter-spacing: -.3px; line-height: 1.3; }
     .step p { margin: 0 0 16px; font-size: 15.5px; }
@@ -214,6 +219,13 @@
     .doc.alt:hover { border-color: #B9C3EE; }
     .doc svg { width: 16px; height: 16px; }
 
+    .after {
+      margin: 0; padding: 18px 40px 30px; background: #fff; border-radius: 0 0 24px 24px;
+      display: flex; gap: 12px; align-items: center; color: var(--ink); font-weight: 600; font-size: 15.5px;
+      box-shadow: 0 30px 60px -30px rgba(14, 18, 64, .25);
+    }
+    .after svg { width: 22px; height: 22px; color: var(--teal); flex-shrink: 0; }
+
     /* ---------- Thank you ---------- */
     .thanks {
       position: relative; overflow: hidden; background: var(--brand); color: #fff; text-align: center;
@@ -240,7 +252,7 @@
       .hero .wrap { grid-template-columns: 1fr; }
       .hero { padding: 56px 0 150px; }
       .steps { grid-template-columns: 1fr; }
-      .steps-head, .steps { padding-left: 24px; padding-right: 24px; }
+      .steps-head, .steps, .after { padding-left: 24px; padding-right: 24px; }
     }
     @media (max-width: 640px) {
       body { font-size: 16px; }
@@ -257,7 +269,8 @@
       .visual { transform: scale(.74); transform-origin: top center; margin: 0 0 -130px -220px; left: 50%; }
       .steps-section { margin-top: -90px; padding-bottom: 60px; }
       .steps-head { padding: 26px 18px 0; border-radius: 20px 20px 0 0; }
-      .steps { padding: 22px 12px 14px; border-radius: 0 0 20px 20px; gap: 12px; }
+      .steps { padding: 22px 12px 0; gap: 12px; }
+      .after { padding: 16px 18px 24px; border-radius: 0 0 20px 20px; align-items: flex-start; font-size: 15px; }
       .step { padding: 22px 18px; }
       .thanks { padding: 46px 20px; border-radius: 22px; margin-bottom: 48px; }
       footer .wrap { justify-content: center; text-align: center; }
@@ -279,7 +292,7 @@
   <header class="hero">
     <div class="wrap">
       <div>
-        <span class="badge"><span class="dot" aria-hidden="true"></span>Participants needed</span>
+        <span class="badge"><span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Participants needed</span>
         <h1>Can smartphone use help us understand <em>anxiety and depression?</em></h1>
         <div class="study-box">
           <small>Participate in our study</small>
@@ -373,16 +386,11 @@
             </a>
           </div>
         </li>
-
-        <li class="step">
-          <div class="step-top">
-            <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></svg></div>
-            <span class="step-num">03</span>
-          </div>
-          <h3>Receive the app link</h3>
-          <p>We will reach out to you and provide the app link after you submit the consent form, prior to the study starting.</p>
-        </li>
       </ol>
+      <p class="after">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></svg>
+        We will reach out to you and provide the app link after you submit the consent form, prior to the study starting.
+      </p>
     </section>
 
     <section class="thanks" aria-label="Thank you">
