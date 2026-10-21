@@ -12,16 +12,10 @@ Live at **https://detectmind.github.io/participant-recruitment-uos/** (once GitH
 
 ```
 docs/
-├── index.html      # the whole site (HTML + CSS + a little JS, no build step)
+├── index.html      # the whole site (plain HTML + CSS, no build step)
 ├── .nojekyll
 └── assets/         # study banner, university logos, app icon
 ```
-
-## How the form works
-
-The site is static, so the form doesn't store anything. It checks the participant's
-details, then opens a pre-written email to `detectmind@soton.ac.uk` in their own email
-app. They attach their signed Consent Form and press send.
 
 ## Updating
 
