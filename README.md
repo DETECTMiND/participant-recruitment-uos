@@ -14,7 +14,7 @@ Live at **https://detectmind.github.io/participant-recruitment-uos/** (once GitH
 docs/
 ├── index.html      # the whole site (plain HTML + CSS, no build step)
 ├── .nojekyll
-└── assets/         # study banner, university logos, app icon
+└── assets/         # study banner, university logos, app icon, fonts (SIL OFL)
 ```
 
 ## Updating
