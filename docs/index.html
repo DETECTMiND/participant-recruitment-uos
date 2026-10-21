@@ -167,7 +167,7 @@
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 
     /* ---------- Steps ---------- */
-    .steps-section { position: relative; margin-top: -110px; padding-bottom: 90px; }
+    .steps-section { position: relative; margin-top: -110px; padding-bottom: 72px; }
     .steps-head {
       background: #fff; border-radius: 24px 24px 0 0; padding: 34px 40px 0;
       display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap;
@@ -189,8 +189,9 @@
     .step-icon svg { width: 26px; height: 26px; }
     .step:nth-child(1) .step-icon { background: linear-gradient(135deg, #16B4E0, #2F6BEA); box-shadow: 0 10px 22px -8px rgba(47, 107, 234, .6); }
     .step:nth-child(2) .step-icon { background: linear-gradient(135deg, #2F6BEA, #7444E4); box-shadow: 0 10px 22px -8px rgba(116, 68, 228, .6); }
-    .step-num { display: flex; align-items: baseline; gap: 8px; font-size: 46px; font-weight: 800; line-height: 1; color: #DEE2F1; letter-spacing: -2px; }
-    .step-num small { font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #B4BAD3; }
+    .step-num { font-size: 13px; font-weight: 700; letter-spacing: .4px; padding: 6px 12px; border-radius: 999px; }
+    .step:nth-child(1) .step-num { color: #1F6FD6; background: #E3EFFC; }
+    .step:nth-child(2) .step-num { color: #6236D4; background: #ECE6FC; }
     .step h3 { margin: 0 0 8px; font-size: 19px; color: var(--ink); font-weight: 800; letter-spacing: -.3px; line-height: 1.3; }
     .step p { margin: 0 0 16px; font-size: 15.5px; }
     .contacts { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; }
@@ -230,7 +231,7 @@
     /* ---------- Thank you ---------- */
     .thanks {
       position: relative; overflow: hidden; background: var(--brand); color: #fff; text-align: center;
-      border-radius: 28px; padding: 64px 24px; margin-bottom: 70px;
+      border-radius: 28px; padding: 64px 24px; margin-bottom: 72px;
     }
     .thanks::before, .thanks::after { content: ""; position: absolute; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .18); }
     .thanks::before { width: 340px; height: 340px; left: -120px; top: -160px; }
@@ -268,12 +269,12 @@
       .hero h1 { margin: 22px 0; letter-spacing: -1px; }
       .actions .btn { flex: 1 1 100%; }
       .visual { transform: scale(.74); transform-origin: top center; margin: 0 0 -130px -220px; left: 50%; }
-      .steps-section { margin-top: -90px; padding-bottom: 60px; }
+      .steps-section { margin-top: -90px; padding-bottom: 40px; }
       .steps-head { padding: 26px 18px 0; border-radius: 20px 20px 0 0; }
       .steps { padding: 22px 12px 0; gap: 12px; }
       .after { padding: 16px 18px 24px; border-radius: 0 0 20px 20px; align-items: flex-start; font-size: 15px; }
       .step { padding: 22px 18px; }
-      .thanks { padding: 46px 20px; border-radius: 22px; margin-bottom: 48px; }
+      .thanks { padding: 46px 20px; border-radius: 22px; margin-bottom: 40px; }
       footer .wrap { justify-content: center; text-align: center; }
     }
   </style>
@@ -351,7 +352,7 @@
         <li class="step">
           <div class="step-top">
             <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
-            <span class="step-num"><small>Step</small>01</span>
+            <span class="step-num">Step 1</span>
           </div>
           <h3>Read the Participant Information Sheet</h3>
           <p>Read the Participant Information Sheet to understand the details of the study.</p>
@@ -366,7 +367,7 @@
         <li class="step">
           <div class="step-top">
             <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
-            <span class="step-num"><small>Step</small>02</span>
+            <span class="step-num">Step 2</span>
           </div>
           <h3>Complete and return the Consent Form</h3>
           <p>Complete the Consent Form and return it to any of the emails below.</p>
